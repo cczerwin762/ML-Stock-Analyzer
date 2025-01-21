@@ -8,6 +8,7 @@ from Helper import *
 import yfinance as yf
 import re
 from WebScraper import *
+import os
 '''
 Scripts to help with setup, testing, and stuff. I will comment these out as I go
 '''
@@ -20,18 +21,15 @@ ws = WebScraper(url,attr,filter)
 ticks = []
 ws.scrapeToList(ticks)
 i = 0
-end = len(ticks)
-while i < end :
-    stock = yf.Ticker(ticks[i])
-    try:
-        tmp = stock.info
-    except:
+while i < len(ticks):
+    if len(ticks[i]) > 5 or len(ticks[i]) == 0: # quick and dirty way of filtering out non-tickers
+        # print(ticks[i] + " " + str(i))
         del ticks[i]
-        end-=1
-        continue
-    i+=1
-print(ticks)
-#clean these tickers and helper file
+    else:
+        i+=1
+print(os.getcwd())
+ParseListToTxt(os.getcwd() + "/help/ML_Training/tickers.txt", ticks)
+
 
 
 

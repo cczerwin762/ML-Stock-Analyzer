@@ -28,9 +28,9 @@ class WebScraper:
         self.scrapeToList(list)
         match fileName[-3:]:
             case '.txt':
-                ParseListToTxt()
+                ParseListToTxt(fileName, list)
             case '.csv':
-                ParseListToCsv()
+                ParseListToCsv(fileName, list)
             case _:
                 print('invalid file extension')
 
