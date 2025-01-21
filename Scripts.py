@@ -27,8 +27,7 @@ while i < len(ticks):
         del ticks[i]
     else:
         i+=1
-print(os.getcwd())
-ParseListToTxt(os.getcwd() + "/help/ML_Training/tickers.txt", ticks)
+ParseListToTxt('./help/ML-Training/tickers.txt', ticks)
 
 
 
